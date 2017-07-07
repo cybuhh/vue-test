@@ -2,28 +2,26 @@
   <div>
     <b-table :fields="fields" :items="items">
       <template slot="index" scope="data">
-        <!-- A Virtul column -->
         {{data.index + 1}}
       </template>
-      <template slot="name" scope="data">
-        <!-- A custom formatted column -->
-        {{data.value.first}} {{data.value.last}}
-      </template>
-      <template slot="nameage" scope="data">
-        <!-- A Virtul composite column -->
-        {{data.item.name.first}} is {{data.item.age}} years old
+      <template slot="actions" scope="data">
+        <app-actions :appId="data.item.pid" />
       </template>
     </b-table>
-    <app-actions id="11" />
   </div>
 </template>
 
 <script>
+  import appActions from './app-actions';
+
   export default {
     name: 'server-item',
     props: [
       'title',
     ],
+    components: {
+      appActions,
+    },
     data() {
       return {
         fields: {
@@ -54,14 +52,13 @@
         },
         items: [
           {
-            pid: 1,
+            pid: 77,
             app: 'this is the app',
             uptime: 'a few secs',
             restarts: 33,
             online: 'awesome icon',
             cpu: '3.33%',
             mem: '33.31MB',
-            actions: '<icon name="beer"></icon>',
           },
         ],
       };

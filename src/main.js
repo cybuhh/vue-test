@@ -9,11 +9,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 import App from './App';
-import AppActions from './components/App-Actions';
+// import AppActions from './components/App-Actions';
 
 Vue.use(BootstrapVue);
 Vue.component('icon', Icon);
-Vue.component('app-actions', AppActions);
+// Vue.component('app-actions', AppActions);
 // import router from './router';
 
 Vue.config.productionTip = false;

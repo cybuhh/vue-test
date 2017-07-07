@@ -11,12 +11,12 @@
 </template>
 
 <script>
-  import ServerItem from './Server-Item';
+  import serverItem from './server-item';
 
   export default {
     name: 'server-list',
     components: {
-      ServerItem,
+      serverItem,
     },
     data() {
       return {
