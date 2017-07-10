@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <!--<router-view></router-view>-->
-    <server-list></server-list>
+    <server-list :servers="servers"></server-list>
   </div>
 </template>
 
@@ -12,6 +11,14 @@ export default {
   name: 'app',
   components: {
     serverList,
+  },
+  data() {
+    return {
+      servers: [
+        'svp-encodertest-01.int.vgnett.no',
+        'localhost',
+      ],
+    };
   },
 };
 </script>

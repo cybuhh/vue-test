@@ -1,10 +1,10 @@
 <template>
   <div>
-    <button @click="triggerAction(appId, 'start')"><icon name="play" label="start"></icon></button>
-    <button @click="triggerAction(appId, 'stop')"><icon name="stop" label="stop"></icon></button>
-    <button @click="triggerAction(appId, 'restart')"><icon name="refresh" label="restart"></icon></button>
-    <button @click="triggerAction(appId, 'scaleUp')"><icon name="plus" label="scale up"></icon></button>
-    <button @click="triggerAction(appId, 'scaleDown')"><icon name="minus" label="scale down"></icon></button>
+    <a href="#" @click="triggerAction(appId, 'start')" size="sm"><icon name="play" label="start"></icon></a>
+    <a href="#" @click="triggerAction(appId, 'stop')" size="sm"><icon name="stop" label="stop"></icon></a>
+    <a href="#" @click="triggerAction(appId, 'restart')" size="sm"><icon name="refresh" label="restart"></icon></a>
+    <a href="#" @click="triggerAction(appId, 'scaleUp')" size="sm"><icon name="plus" label="scale up"></icon></a>
+    <a href="#"  @click="triggerAction(appId, 'scaleDown')" size="sm"><icon name="minus" label="scale down"></icon></a>
   </div>
 </template>
 
@@ -21,7 +21,7 @@
     },
     methods: {
       triggerAction(appId, type) {
-        console.log(appId, type);
+        window.console.log(appId, type);
       },
     },
   };
