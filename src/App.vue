@@ -15,8 +15,8 @@ export default {
   data() {
     return {
       servers: [
-        'svp-encodertest-01.int.vgnett.no',
         'localhost',
+        'svp-encodertest-01.int.vgnett.no',
       ],
     };
   },

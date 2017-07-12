@@ -1,5 +1,6 @@
 <template>
   <div v-if="uptime">
+    <spinner v-show="loadingStatus" />
     <div class="jumbotron">
       <header>{{ hostname }}</header>
       <ul>
@@ -30,7 +31,7 @@
           <icon :name="(data.item.online) ? 'check' : 'remove'" :class="(data.item.online) ? 'text-success' : 'text-danger'" label="start"></icon>
         </template>
         <template slot="actions" scope="data">
-          <app-actions :appId="data.item.pid" />
+          <app-actions :appId="data.item.app" :server="address" :instances="data.item.instances" @loading="loadingEv" />
         </template>
       </b-table>
     </div>
@@ -39,7 +40,11 @@
 
 <script>
   import filesize from 'filesize';
+  import PulseLoader from 'vue-spinner/src/PulseLoader';
+
   import appActions from './app-actions';
+  import spinner from './spinner';
+
   import { status } from '../lib/pm2-api';
   import formatUptimeValue from '../lib/format-uptime-value';
 
@@ -47,15 +52,17 @@
     name: 'server-item',
 
     props: [
-      'title',
+      'address',
     ],
 
     components: {
       appActions,
+      PulseLoader,
+      spinner,
     },
 
     async mounted() {
-      const { system_info: systemInfo, monit, processes } = await status(`http://${this.title}`);
+      const { system_info: systemInfo, monit, processes } = await status(`http://${this.address}`);
 
       this.hostname = systemInfo.hostname;
       this.uptime = formatUptimeValue(systemInfo.uptime);
@@ -84,6 +91,7 @@
 
     data() {
       return {
+        loadingStatus: false,
         uptime: false,
         cpus: false,
         mem: false,
@@ -120,6 +128,15 @@
         },
         items: [],
       };
+    },
+
+    methods: {
+      triggerAction() {
+        window.console.log();
+      },
+      loadingEv(newStatus) {
+        this.loadingStatus = newStatus;
+      },
     },
 };
 </script>

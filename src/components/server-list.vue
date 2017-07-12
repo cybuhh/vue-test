@@ -3,7 +3,7 @@
     <b-card no-block>
       <b-tabs ref="tabs" card>
         <b-tab v-for="item in servers" :key="item.id" :title="item">
-          <server-item :title="item" />
+          <server-item :address="item" />
         </b-tab>
       </b-tabs>
     </b-card>
