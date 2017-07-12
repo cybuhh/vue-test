@@ -40,7 +40,6 @@
 
 <script>
   import filesize from 'filesize';
-  import PulseLoader from 'vue-spinner/src/PulseLoader';
 
   import appActions from './app-actions';
   import spinner from './spinner';
@@ -57,7 +56,6 @@
 
     components: {
       appActions,
-      PulseLoader,
       spinner,
     },
 
